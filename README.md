@@ -22,3 +22,4 @@ More smooth UI colors :)
 
 
 Live Demo: https://english-last-letter.herokuapp.com/
+We publish our backend and frontend on heroku. Make sure CORS disabled when you try demo :)
