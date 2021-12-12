@@ -9,7 +9,7 @@ import VueSocketIO from 'vue-socket.io';
 Vue.config.productionTip = false;
 
 Vue.use(new VueSocketIO({
-  connection: 'http://192.168.1.39:5000'
+  connection: 'https://lastletter1.herokuapp.com/'
 }));
 
 new Vue({

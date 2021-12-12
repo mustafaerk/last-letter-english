@@ -103,7 +103,7 @@ export default {
         body: JSON.stringify({ word: data.word, lg: this.userInfo.language }),
       };
       let response = await fetch(
-        "http://192.168.1.39:5000/tutvecevir",
+        "https://lastletter1.herokuapp.com//tutvecevir",
         requestOptions
       );
       response = await response.json();
