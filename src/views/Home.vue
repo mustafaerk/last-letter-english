@@ -13,7 +13,7 @@
           </option>
         </select>
       </div>
-      <div class="input-wrapper input-field">
+      <div class="home-input__wrapper input-field">
         <input
           placeholder="Username"
           v-model="username"
@@ -127,7 +127,7 @@ select {
   color: #d1b3b3;
   box-shadow: 0 0.2em #ad4242;
 }
-.input-wrapper input {
+.home-input__wrapper input {
   border: 2px solid #5a2c2ce6 !important;
   background: #e7e7e7;
   color: black;

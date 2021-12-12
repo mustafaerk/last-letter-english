@@ -125,14 +125,40 @@ export default {
             classes: "toast__modi",
           });
         } else if (englishWordList.includes(this.word.toLowerCase())) {
-          this.$socket.emit("gameMessage", {
-            action_type: "MESSAGE",
-            roomId: this.gameInfo.roomId,
-            word: this.word.toLowerCase(),
-            id: this.userInfo.id,
-          });
-          this.word = "";
-          this.isMyTurn = false;
+          if (this.wordList.length) {
+            const lastWord = this.wordList[this.wordList.length - 1];
+            const lastLetterOfLastWord = lastWord.word.charAt(
+              lastWord.word.length - 1
+            );
+            const firstLetterOfNewWord = this.word.charAt(0).toLowerCase();
+            if (lastLetterOfLastWord === firstLetterOfNewWord) {
+              this.$socket.emit("gameMessage", {
+                action_type: "MESSAGE",
+                roomId: this.gameInfo.roomId,
+                word: this.word.toLowerCase(),
+                id: this.userInfo.id,
+              });
+              this.word = "";
+              this.isMyTurn = false;
+            } else {
+              var toastHTML = `<strong>${this.word.toLowerCase()}</strong>&nbsp is not starting with ${lastLetterOfLastWord}!`;
+
+              M.toast({
+                html: toastHTML,
+                outDuration: 1000,
+                classes: "toast__modi",
+              });
+            }
+          } else {
+            this.$socket.emit("gameMessage", {
+              action_type: "MESSAGE",
+              roomId: this.gameInfo.roomId,
+              word: this.word.toLowerCase(),
+              id: this.userInfo.id,
+            });
+            this.word = "";
+            this.isMyTurn = false;
+          }
         } else {
           var toastHTML = `<strong>${this.word.toLowerCase()}</strong>&nbsp is not exist in English dictionary!`;
 
@@ -157,6 +183,11 @@ export default {
         });
       }
     },
+  },
+  created: function () {
+    if (this.getUserInfoHandler.id === null) {
+      this.$router.push({ name: "Home" });
+    }
   },
 };
 </script>
