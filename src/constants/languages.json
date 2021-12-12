@@ -1,6 +1,6 @@
 [
   { "name": "Bulgarian", "code": "bg" },
-  { "name": "Chinese", "code": "zh" },
+  { "name": "Chinese", "code": "zh-cn" },
   { "name": "Czech", "code": "cs" },
   { "name": "Dutch", "code": "nl" },
   { "name": "Filipino", "code": "tl" },
