@@ -28,6 +28,10 @@ Our project based on PWA but not ready to use on mobile exaly for now PWA will b
 
 More smooth UI colors :)
 
+How To Play
+----------------------------------
+# Game require 2 person for play. when you click play now after select your language and username circe will run til find other person
+
 
 
 Live Demo: https://english-last-letter.herokuapp.com/
