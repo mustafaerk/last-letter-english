@@ -30,7 +30,9 @@ More smooth UI colors :)
 
 How To Play
 ----------------------------------
-# Game require 2 person for play. when you click play now after select your language and username circe will run til find other person
+# Game require 2 person for play. 
+
+# When you click play now after select your language and username circe will run til find other person
 
 
 
