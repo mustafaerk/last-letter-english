@@ -1,11 +1,9 @@
 <template>
   <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo right">Logo</a>
+      <a href="/" class="brand-logo right"></a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-        <li><a href="/rules">Rules</a></li>
-        <li><a href="/about">About Us</a></li>
       </ul>
     </div>
   </nav>
@@ -18,7 +16,11 @@ export default {
 </script>
 
 <style scoped>
+nav {
+  position: fixed;
+  top: 0;
+}
 .nav-wrapper {
-  background: #333;
+  background: tomato;
 }
 </style>

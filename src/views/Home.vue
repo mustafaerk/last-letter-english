@@ -27,25 +27,31 @@
         class="btn home-button__play"
         type="submit"
         name="action"
+        v-if="!isSearching"
+        :disabled="this.language === '' || this.username === ''"
       >
         Play Now
         <i class="material-icons right">play_circle_filled</i>
       </button>
+      <spinner v-else />
     </div>
   </div>
 </template>
 
 <script>
+import Spinner from "../components/Spinner.vue";
 import languagesList from "../constants/languages.json";
 
 export default {
+  components: { Spinner },
   name: "Home",
   data() {
     return {
       username: "",
       language: "",
-      languagesList: languagesList,
-      roomId: null,
+      languagesList,
+      isSearching: false,
+      id: null,
     };
   },
   sockets: {
@@ -55,12 +61,29 @@ export default {
     matching: function (data) {
       if (data !== "Wait") {
         this.$store.dispatch("handleUpdateGameInfo", data);
+        this.$store.dispatch("handleUpdateUserInfo", {
+          name: this.username,
+          id: this.id,
+          language: this.language,
+        });
+        this.$socket.emit("joinRoom", {
+          roomId: data.roomId,
+        });
+
+        this.$router.push({ name: "Game" });
       }
     },
   },
   methods: {
     handleClickOnPlayButton() {
-      this.$socket.emit("matching", { message: this.username });
+      const id = Date.now();
+      this.isSearching = true;
+      this.id = id;
+      this.$socket.emit("matching", {
+        name: this.username,
+        id,
+        language: this.language,
+      });
     },
   },
 };
@@ -73,7 +96,6 @@ select {
   outline: none;
 }
 .wrapper {
-  background-image: url("~@/image/hom-bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -83,6 +105,7 @@ select {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 64px;
   height: calc(100vh - 64px);
 }
 .input-field {
