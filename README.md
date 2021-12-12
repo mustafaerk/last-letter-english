@@ -1,6 +1,15 @@
 # last-letter-english
 
+The logic of the game is like a chain. You should follow the last letter of the words, then find a word that starts with that letter. Each people will see meaning of word in their own language. Project for who want to improve his English vocabulary.
+
+
+Example: Apple-End-Door-Random-Moon-Not-True ....
+
+
+You will play with online users
+
 This repo is Frontend  of our game. 
+--------------------------------------------------------------
 
 
 We are far away from our dream for now but we are planning more feature now as :
